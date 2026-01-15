@@ -5,8 +5,88 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gerenciador de Lista de Compras</title>
     <link rel="shortcut icon" href="./assets/img/shoppingCart.svg" type="image/x-icon">
+    <link rel="stylesheet" href="./assets/styles/index.css">
 </head>
 <body>
-    
+    <header>
+        <h1>Lista de compras</h1>
+        <nav>
+            <ul>
+                <li class="mainContentOption selectedOption">
+                    <img class="icon" src="./assets/img/shoppingCart.svg" alt="shopping cart icon">
+                    <p>Sua lista de compras</p>
+                </li>
+                <li class="mainContentOption">
+                    <img class="icon" src="./assets/img/addition.svg" alt="addition cross icon">
+                    <p>Adicionar produto</p>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <article id="shoppingList">
+            <section id="listOptions">
+                <label>
+                    Pesquise pelo item da lista...
+                    <input type="text" name="listSearch" id="listSearchInput">
+                </label>
+                <button id="clearList">Limpar lista</button>
+            </section>
+            <section>
+                <ul id="productsList">
+                    <li>
+                        <p class="productInfoField">Produto 1</p>
+                        <p class="productInfoField">Marca do produto</p>
+                        <p class="productInfoField">300</p>
+                        <p class="productInfoField">Gramas</p>
+                        <button class="productInfoField" id="deleteProduct">
+                            <img src="./assets/img/trashCan.svg" alt="trash can icon" class="icon">
+                        </button>
+                    </li>
+                    <li>
+                        <p class="productInfoField">Produto 2</p>
+                        <p class="productInfoField">Qualquer/nenhum</p>
+                        <p class="productInfoField">12</p>
+                        <p class="productInfoField">Unidade(s)</p>
+                        <button class="productInfoField" id="deleteProduct">
+                            <img src="./assets/img/trashCan.svg" alt="trash can icon" class="icon">
+                        </button>
+                    </li>
+                </ul>
+            </section>
+        </article>
+        <aticle id="addProductToList">
+            <header>
+                <h3>Adicionando novo produto a lista</h3>
+            </header>
+            <section>
+                <form>
+                    <section>
+                        <label for="productNameInput">
+                            Digite o nome do produto: 
+                            <input type="text" name="productName" id="productNameInput">
+                        </label>
+                        <label for="productBrandInput">
+                            Digite a marca do produto (opicional): 
+                            <input type="text" name="productBrand" id="productBrandInput">
+                        </label>
+                    </section>
+                    <section>
+                        <label for="productQuantityInput">
+                            Digite a quantidade do produto: 
+                            <input type="number" name="productQuantity" id="productQuantityInput" value="1" min="1">
+                        </label>
+                        <select name="productQuantityType" id="productQuantityTypeInput">
+                            <option value="un">Unidade</option>
+                            <option value="kg">Quilos</option>
+                            <option value="g">Gramas</option>
+                            <option value="other">Outro</option>
+                        </select>
+                    </section>
+                    <input type="submit" value="Adicionar">
+                </form>
+            </section>
+        </aticle>
+    </main>
 </body>
 </html>
