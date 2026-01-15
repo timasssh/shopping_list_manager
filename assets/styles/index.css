@@ -2,8 +2,11 @@
     --background-color: #aac;
     --background-color2: #bbd;
     --background-color3: #cce;
+
     --color1: #eee;
     --color2: #999;
+
+    --color-danger: #f34;
 }
 
 * {
@@ -24,6 +27,17 @@ body {
 .icon {
     max-height: 30px;
     max-width: 30px;
+}
+input[type = "text"], input[type = "number"], select, input[type = "submit"], .actionButton {
+    outline: none;
+    padding: 1ch 2ch;
+    border: none;
+
+    background-color: #fff;
+    border-radius: 4px;
+}
+input[type = "text"]:hover, input[type = "number"]:hover, select:hover, input[type = "submit"]:hover, .actionButton:hover {
+    background-color: var(--color1);
 }
 
 body > header {
@@ -75,6 +89,19 @@ main > article {
     width: 100%;
 }
 
+#shoppingList {
+    display: flex;
+    flex-direction: column;
+    gap: 1ch;
+}
+#shoppingList section:first-child {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 1.5ch;
+}
+
 #productsList {
     list-style: none;
 }
@@ -93,8 +120,30 @@ main > article {
 }
 .productInfoField {
     max-width: 100%;
-    border: 1px solid black;
+    padding: 0.5ch;
+
+    border: 1px dashed black;
     line-break: anywhere;
+
+    display: grid;
+    align-content: center;
+}
+.productInfoField button {
+    background-color: var(--color-danger);
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+    padding: 0.5ch;
+
+    width: fit-content;
+    height: fit-content;
+
+    justify-self: center;
+    transition: 0.5s;
+}
+.productInfoField button:hover {
+    opacity: 0.8;
+    transform: scale(110%);
 }
 
 #addProductToList {

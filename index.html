@@ -25,32 +25,37 @@
     </header>
     <main>
         <article id="shoppingList">
-            <section id="listOptions">
+            <section>
                 <label>
                     Pesquise pelo item da lista...
                     <input type="text" name="listSearch" id="listSearchInput">
                 </label>
-                <button id="clearList">Limpar lista</button>
+                <button class="actionButton" id="clearList">Limpar lista</button>
             </section>
             <section>
+                <h5>Lista de compras:</h5>
                 <ul id="productsList">
                     <li>
                         <p class="productInfoField">Produto 1</p>
                         <p class="productInfoField">Marca do produto</p>
                         <p class="productInfoField">300</p>
                         <p class="productInfoField">Gramas</p>
-                        <button class="productInfoField" id="deleteProduct">
-                            <img src="./assets/img/trashCan.svg" alt="trash can icon" class="icon">
-                        </button>
+                        <div class="productInfoField">
+                            <button id="deleteProduct">
+                                <img src="./assets/img/trashCan.svg" alt="trash can icon" class="icon">
+                            </button>
+                        </div>
                     </li>
                     <li>
                         <p class="productInfoField">Produto 2</p>
                         <p class="productInfoField">Qualquer/nenhum</p>
                         <p class="productInfoField">12</p>
                         <p class="productInfoField">Unidade(s)</p>
-                        <button class="productInfoField" id="deleteProduct">
-                            <img src="./assets/img/trashCan.svg" alt="trash can icon" class="icon">
-                        </button>
+                        <div class="productInfoField">
+                            <button id="deleteProduct">
+                                <img src="./assets/img/trashCan.svg" alt="trash can icon" class="icon">
+                            </button>
+                        </div>
                     </li>
                 </ul>
             </section>
