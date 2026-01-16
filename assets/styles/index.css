@@ -32,12 +32,15 @@ input[type = "text"], input[type = "number"], select, input[type = "submit"], .a
     outline: none;
     padding: 1ch 2ch;
     border: none;
-
+    
     background-color: #fff;
     border-radius: 4px;
 }
 input[type = "text"]:hover, input[type = "number"]:hover, select:hover, input[type = "submit"]:hover, .actionButton:hover {
     background-color: var(--color1);
+}
+input[type = "submit"], .actionButton {
+    cursor: pointer;
 }
 
 body > header {
@@ -55,7 +58,7 @@ header nav ul {
     height: 100%;
     
     list-style: none;
-
+    
     display: flex;
     flex-direction: row;
     gap: 2.5ch;
@@ -89,16 +92,16 @@ main > article {
     width: 100%;
 }
 
-#shoppingList {
+main .menu:first-child {
     display: flex;
     flex-direction: column;
     gap: 1ch;
 }
-#shoppingList section:first-child {
+main .menu:first-child section:first-child {
     display: flex;
     justify-content: space-between;
     align-items: center;
-
+    
     padding: 1.5ch;
 }
 
@@ -107,7 +110,7 @@ main > article {
 }
 #productsList li {
     width: 100%;
-
+    
     display: grid;
     align-content: center;
     grid-template-columns: 20% 20% 20% 20% 20%;
@@ -121,10 +124,10 @@ main > article {
 .productInfoField {
     max-width: 100%;
     padding: 0.5ch;
-
-    border: 1px dashed black;
+    
+    border: 1px dashed #000;
     line-break: anywhere;
-
+    
     display: grid;
     align-content: center;
 }
@@ -134,10 +137,10 @@ main > article {
     border: none;
     border-radius: 4px;
     padding: 0.5ch;
-
+    
     width: fit-content;
     height: fit-content;
-
+    
     justify-self: center;
     transition: 0.5s;
 }
@@ -146,11 +149,18 @@ main > article {
     transform: scale(110%);
 }
 
-#addProductToList {
+main .menu:last-child {
     height: 100%;
     width: 75%;
-
+    
     display: flex;
     flex-direction: column;
     gap: 2ch;
+}
+main .menu:last-child form section:not(:last-of-type) label {
+    display: flex;
+    flex-direction: column;
+}
+main .menu:last-child form section {
+    padding: 1ch;
 }
