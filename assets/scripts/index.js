@@ -7,6 +7,7 @@ export const menus = document.querySelectorAll(".menu");
 const form = document.querySelector("#addProductOnListForm");
 const productsList = [];
 const productListElement = document.getElementById("productsList");
+const clearListButton = document.getElementById("clearList");
 
 showMenu();
 switchMenuButtons.forEach((element, index) => {
@@ -22,3 +23,10 @@ form.addEventListener("submit", (event) => {
 
     addProductOnList(productListElement, newProduct);
 });
+
+clearListButton.addEventListener("click", () => {
+    while(productsList.length) productsList.pop(); // clears the productList array
+    console.log(productsList);
+
+    productListElement.innerHTML = "";
+})
