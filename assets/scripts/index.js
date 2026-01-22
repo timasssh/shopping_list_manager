@@ -9,6 +9,7 @@ export const productsList = [];
 const productListElement = document.getElementById("productsList");
 const productTemplate = document.getElementById("productTemplate");
 const clearListButton = document.getElementById("clearList");
+const searchProductInput = document.querySelector("[data-product-search]");
 
 showMenu();
 switchMenuButtons.forEach((element, index) => {
@@ -31,3 +32,14 @@ clearListButton.addEventListener("click", () => {
 
     productListElement.innerHTML = "";
 })
+
+searchProductInput.addEventListener("input", (event) => {
+    let searchingText = event.target.value.trim().toLowerCase();
+
+    productsList.forEach((product) => {
+        let isVisible = product.name.toLowerCase().includes(searchingText) || 
+                        product.brand.toLowerCase().includes(searchingText);
+
+        product.HTMLElement.classList.toggle("hidden", !isVisible);
+    })
+});
