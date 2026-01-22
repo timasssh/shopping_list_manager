@@ -1,54 +1,51 @@
 import { productsList } from "./index.js";
 
-export function addProductOnList(listElement, product) {
-    let productsQuantityUnityDictionary = {
-        "un" : "Unidade(s)",
-        "kg" : "Quilo(s)",
-        "g" : "Grama(s)",
-        "l" : "Litro(s)",
-        "ml" : "Mililitro(s)",
-        "other" : "Outro",
-    }
-    let productsValuesOnArray = [product.name, product.brand, product.quantity, productsQuantityUnityDictionary[product.quantityUnity]];
+export function addProductOnList(listElement, productTemplate, product) {
+    productTemplate = productTemplate.content.firstElementChild;
     
-    let li = document.createElement("li");
-    const totalOfFields = 4;
+    let productInfoOnArray = getProductInfoOnArray(product);
+    
+    let productListItem = productTemplate.cloneNode(true);
+    let productListItemInfo = productListItem.querySelectorAll("p.productInfoField");
+    productListItemInfo.forEach((element, index) => {
+        element.textContent = productInfoOnArray[index];
+    });
 
-    for(let i = 0; i < totalOfFields; i++) {
-        let p = document.createElement("p");
-        p.textContent = productsValuesOnArray[i];
-        p.classList.add("productInfoField");
-
-        li.appendChild(p);
-    }
-
-    let div = document.createElement("div");
-    div.classList.add("productInfoField");
-    let button = document.createElement("button");
-    button.classList.add("deleteProduct");
-    button.addEventListener("click", (event) => {
+    let productListItemRemoveButton = productListItem.querySelector("button.deleteProduct");
+    productListItemRemoveButton.addEventListener("click", (event) => {
         let elementToRemove = event.target.parentElement.parentElement.parentElement;
         let indexOfElementToRemove = Array.from(listElement.children).indexOf(elementToRemove);
         
         if(indexOfElementToRemove !== -1) {
             productsList.splice(indexOfElementToRemove, 1);
-            removeTagOnCLick(li);
+            removeTagOnCLick(productListItem);
         }
 
         console.log(productsList);
     });
 
-    const trashCanImageInfo = ["./assets/img/trashCan.svg", "trash can icon"];
-    let img = document.createElement("img");
-    img.src = trashCanImageInfo[0];
-    img.alt = trashCanImageInfo[1];
-    img.classList.add("icon");
+    listElement.appendChild(productListItem);
 
-    button.appendChild(img);
-    div.appendChild(button);
-    li.appendChild(div);
+    return productListItem;
+}
 
-    listElement.appendChild(li);
+function getProductInfoOnArray(product) {
+    let productsQuantityUnityDictionary = new Map([
+        ["un" , "Unidade(s)"],
+        ["kg" , "Quilo(s)"],
+        ["g" , "Grama(s)"],
+        ["l" , "Litro(s)"],
+        ["ml" , "Mililitro(s)"],
+        ["other" , "Outro(s)"],
+    ]);
+
+    let productName = product.name !== "" ? product.name : "--";
+    let productBrand = product.brand !== "" ? product.brand : "--";
+    let productQuantity = !isNaN(product.quantity) ? product.quantity : "--";
+    let productQuantityUnity = productsQuantityUnityDictionary.has(product.quantityUnity) ? 
+                                productsQuantityUnityDictionary.get(product.quantityUnity) : "--";
+
+    return [productName, productBrand, productQuantity, productQuantityUnity];
 }
 
 function removeTagOnCLick(tagToRemove) {

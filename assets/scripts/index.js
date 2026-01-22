@@ -7,6 +7,7 @@ export const menus = document.querySelectorAll(".menu");
 const form = document.querySelector("#addProductOnListForm");
 export const productsList = [];
 const productListElement = document.getElementById("productsList");
+const productTemplate = document.getElementById("productTemplate");
 const clearListButton = document.getElementById("clearList");
 
 showMenu();
@@ -18,10 +19,10 @@ form.addEventListener("submit", (event) => {
     event.preventDefault();
 
     let newProduct = createProduct(form);
+
+    newProduct.HTMLElement = addProductOnList(productListElement, productTemplate, newProduct);
     productsList.push(newProduct);
     console.log(productsList);
-
-    addProductOnList(productListElement, newProduct);
 });
 
 clearListButton.addEventListener("click", () => {
