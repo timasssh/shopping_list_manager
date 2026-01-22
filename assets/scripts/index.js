@@ -5,7 +5,7 @@ import { addProductOnList } from "./addProductOnList.js";
 export const switchMenuButtons = document.querySelectorAll(".mainContentOption");
 export const menus = document.querySelectorAll(".menu");
 const form = document.querySelector("#addProductOnListForm");
-const productsList = [];
+export const productsList = [];
 const productListElement = document.getElementById("productsList");
 const clearListButton = document.getElementById("clearList");
 
