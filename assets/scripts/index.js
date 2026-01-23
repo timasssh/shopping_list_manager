@@ -31,15 +31,33 @@ clearListButton.addEventListener("click", () => {
     console.log(productsList);
 
     productListElement.innerHTML = "";
-})
+});
 
 searchProductInput.addEventListener("input", (event) => {
+    const classToHideElement = "hidden";
+    
     let searchingText = event.target.value.trim().toLowerCase();
 
     productsList.forEach((product) => {
         let isVisible = product.name.toLowerCase().includes(searchingText) || 
                         product.brand.toLowerCase().includes(searchingText);
 
-        product.HTMLElement.classList.toggle("hidden", !isVisible);
+        product.HTMLElement.classList.toggle(classToHideElement, !isVisible);
+
+        restoreDOMOrderFromArray(productsList, productListElement);
+        moveElementsWithClassToEnd(productsList, classToHideElement, productListElement);
     })
+
+    function restoreDOMOrderFromArray(array, elementToInsert) {
+        array.forEach(itemOfTheList => {
+            elementToInsert.appendChild(itemOfTheList.HTMLElement);
+        });
+    }
+    function moveElementsWithClassToEnd(array, selectionClass, elementToInsert) {
+        array.forEach(itemOfTheList => {
+            if(itemOfTheList.HTMLElement.classList.contains(selectionClass)) {
+                elementToInsert.insertAdjacentElement("beforeend", itemOfTheList.HTMLElement);
+            }
+        });
+    }
 });
